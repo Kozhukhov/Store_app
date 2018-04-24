@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <meta charset="utf-8">
+  <title>Store</title>
+  <link href="style.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4"
+    crossorigin="anonymous">
+</head>
+
+<body>
+  <nav class="navbar navbar-dark fixed-top bg-primary flex-md-nowrap p-1 shadow header">
+    <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="#">App</a>
+    <input class="form-control form-control-dark w-100" type="text" placeholder="Search" aria-label="Search">
+    <ul class="navbar-nav px-3">
+      <li class="nav-item text-nowrap">
+        <a class="nav-link" href="#">Sign out</a>
+      </li>
+    </ul>
+  </nav>
+  <div class="Main">
+    <div class="container-fluid">
+      <div class="row">
+        <nav class="col-md-2  d-md-block sidebar">
+          <div class="sidebar-sticky">
+            <ul class="nav flex-column left-menu">
+              <li class="nav-item menu">
+                <a class="nav-link" href="#" id="products">
+                  <span data-feather="file"></span>
+                  Catalog
+                </a>
+              </li>
+              <li class="nav-item menu">
+                <a class="nav-link" href="#" id="cart">
+                  <span data-feather="file"></span>
+                  Cart
+                </a>
+              </li>
+            </ul>
+          </div>
+        </nav>
+
+        <h1 id="startLabel" class="all-main col-md-10 ml-sm-auto col-lg-10">Welcome back!</h1>
+        <div id="all-main" class="all-main">
+          <main role="main" id="main" class="col-md-9 ml-sm-auto col-lg-8 ">
+           
+            <div id="productTable" class="all">
+              <table class="table products">
+                <thead>
+                  <tr>
+                    <th>#</th>
+                    <th>Name</th>
+                    <th>Price</th>
+                    <th>Description</th>
+                    <th>Category</th>
+                    <th></th>
+                  </tr>
+                </thead>
+                <tbody>
+                </tbody>
+              </table>
+            </div>
+
+            <div id="cartTable" class="all">
+              <table class="table table-bordered">
+                <thead>
+                  <tr>
+                    <th>#</th>
+                    <th>Name</th>
+                    <th>Price</th>
+                    <th>Description</th>
+                    <th>Category</th>
+                    <th>Count</th>
+                  </tr>
+                </thead>
+                <tbody>
+                </tbody>
+              </table>
+            </div>
+          </main>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm"
+    crossorigin="anonymous"></script>
+  <script src="main.js"></script>
+</body>
+</html>

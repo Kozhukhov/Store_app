@@ -1,0 +1,46 @@
+.Main{
+    padding-top:60px;
+}
+body{
+    background-color:rgb(236,239,244)!important;
+}
+.menu{
+font-size:15px!important;
+color:black!important;
+}
+
+.all{
+    width:300px;
+}
+
+#all-main{
+width:500px;
+margin-left:50px;
+display:none;
+}
+
+.sidebar{
+    margin-top:-12px;
+    padding-top:15px;
+    background-color:rgb(55,65,69)!important;
+    height:700px;
+    position: fixed!important;
+}
+.left-menu li a{
+    color:white!important;
+    font-size:15px;
+}
+.left-menu li {
+    width:100%;
+    margin-left:-15px; 
+    padding-right:162px; 
+}
+/* .left-menu li:hover{
+    background-color:rgb(31,40,45)!important;
+} */
+#startLabel{
+    margin-left:50px;
+}
+#cartTable table tr td:last-child input{
+    width:40px!important;
+}
