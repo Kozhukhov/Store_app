@@ -32,7 +32,7 @@ function loadProducts() {
         $("#all-main .products tbody ").append(
           "<tr data-id="+data[i].id +"><td>" + (i + 1) + '</td>\
           <td><div class="textName">' + data[i].name + '</div></td>\
-          <td><div class="textName">'+ data[i].price+'</div></td>\
+          <td data-price='+data[i].price+'><div class="price">'+ data[i].price+'</div></td>\
           <td><div class="textName">'+ data[i].description+'</div></td>\
           <td><div class="textName">'+ loadCategoryById(data[i].category)+'</div></td>\
           <td><button type="button" class="btnAddToCart btn btn-outline-success">Add in cart</button></td></tr>'
@@ -65,6 +65,8 @@ function addToCart(){
       for(var i=0;i<orders.id.length;i++){
         if(orders.id[i] === $(e.target).parents("tr").data("id")){
           orders.count[i]++;
+          $("#cartTable tbody tr:nth-child("+(i+1)+") td:nth-child(6)").html('<div class="btn-group" role="group"><button class="btnPlus btn btn-outline-danger btn-sm">+</button><input type="text" value='+orders.count[i]+'><button class="btnMinus btn btn-outline-success btn-sm">-</button></div>');
+          $("#cartTable tbody tr:nth-child("+(i+1)+") td:nth-child(7)").html( $("#cartTable tbody tr:nth-child("+(i+1)+") td:nth-child(3)").data("price")*orders.count[i]);
           flag = false;
         }
       }
@@ -72,12 +74,12 @@ function addToCart(){
         orders.id.push($(e.target).parents("tr").data("id"));
         orders.count.push(1);
         $(e.target).parents("tr").clone().appendTo("#cartTable tbody");
+        $("#cartTable tbody tr:nth-child("+(orders.id.length)+") td:last-child").html('<div class="btn-group" role="group"><button class="btnPlus btn btn-outline-danger btn-sm">+</button><input type="text" value='+orders.count[i]+'><button class="btnMinus btn btn-outline-success btn-sm">-</button></div>');
+        $("#cartTable tbody tr:nth-child("+(orders.id.length)+")").append('<td>'+ $("#cartTable tbody tr:nth-child("+(orders.id.length)+") td:nth-child(3)").data("price")+'</td>');
+        $("#cartTable tbody tr:nth-child("+(orders.id.length)+")").append('<td><button type="button" class="deleteOrder btn btn-outline-danger">Delete</button></td>');
       }
       flag = true;
-      for(var i=0;i<orders.id.length;i++){
-        $("#cartTable tbody tr:nth-child("+(i+1)+") td:last-child").html('<div class="btn-group" role="group"><button class="btnPlus btn btn-outline-danger btn-sm">+</button><input type="text" value='+orders.count[i]+'><button class="btnMinus btn btn-outline-success btn-sm">-</button></div>');
-    // $("#cartTable tbody tr td:first-child").html(i+1);
-      }
+      console.log(orders);
   });
 }
 function plusCount(){
@@ -86,8 +88,10 @@ function plusCount(){
     for(var i=0;i<orders.id.length;i++){
       if(orders.id[i] === $(e.target).parents("tr").data("id")){
         orders.count[i]++;
+        $("#cartTable tbody tr:nth-child("+(i+1)+") td:nth-child(7)").html( $("#cartTable tbody tr:nth-child("+(i+1)+") td:nth-child(3)").data("price")*orders.count[i]);
       }
     }
+
   });
 }
 function minusCount(){
@@ -97,10 +101,23 @@ function minusCount(){
       for(var i=0;i<orders.id.length;i++){
         if(orders.id[i] === $(e.target).parents("tr").data("id")){
           orders.count[i]--;
+          $("#cartTable tbody tr:nth-child("+(i+1)+") td:nth-child(7)").html( $("#cartTable tbody tr:nth-child("+(i+1)+") td:nth-child(3)").data("price")*orders.count[i]);
         }
       }
+    } 
+  });
+}
+function deleteOrder(){
+  $("body").on("click",".deleteOrder",function(e){
+    for(var i=0;i<orders.id.length;i++){
+      if($(e.target).parents("tr").data("id")===orders.id[i]){
+        orders.id.splice(i,1);
+        orders.count.splice(i,1);
+      }
     }
-    
+
+    $(e.target).parents("tr").remove();
+    console.log(orders);
   });
 }
 $(document).ready(function() {
@@ -111,4 +128,5 @@ $(document).ready(function() {
   addToCart();
   plusCount();
   minusCount();
+  deleteOrder();
 });

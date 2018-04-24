@@ -41,6 +41,6 @@ display:none;
 #startLabel{
     margin-left:50px;
 }
-#cartTable table tr td:last-child input{
+#cartTable table tr td:nth-child(6) input{
     width:40px!important;
 }
